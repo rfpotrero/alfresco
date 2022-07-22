@@ -1,5 +1,6 @@
 ## Purpose of the project
-   * This project represent site for Unchained food a restaurant that we will be using to practice oop principles.
+   * This project represent site for alfresco restaurant
+   * Learn outcomes will be: Frameworks, OOP principles, agile, etc..
 ## User Stories
    * 
 ## Features
