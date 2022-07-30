@@ -1,5 +1,5 @@
 ## Purpose of the project
-   * This project represent site for alfresco restaurant
+   * This project represent site for alfresco restaurant a mediterrean restaurant.
    * Learn outcomes will be: Frameworks, OOP principles, agile, etc..
 ## User Stories
    * 
@@ -8,18 +8,25 @@
    * Ability to modify a booking
 ## Future features
 ## Wireframes
+   * Wireframes can be found here <-Link to wireframes
 ## Technology
-   * HTML & CSS
-   * Bootstrap
+   ### Languages
+   * HTML
+   * CSS
+   * Javascript
    * Python
+   ### Database
+   * PostgresSQL
+   ### Framework 
    * Django
+   ### Libraries
+   * Bootstrap
 ## Testing
    * code validation
    * test cases (user story based with screenshots)
    * fixed bugs
    * supported screens and browsers
 ## Deployment
-   9.1 via gitpod
-   9.2 via github pages
-## credits
-* Bootstrap design [Business Casual](https://github.com/startbootstrap/startbootstrap-business-casual)
+   * Heroku deployment
+## Credits
+
