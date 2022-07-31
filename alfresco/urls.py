@@ -19,5 +19,8 @@ from website.views import get_home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', get_home, name='home')
+    path('', get_home, name='home'),
+    path('/menu', get_menu, name='menu'),
+    path('/reservations', get_reservations, name='reservations'),
+    path('/contact', get_contact, name='contact'),
 ]
