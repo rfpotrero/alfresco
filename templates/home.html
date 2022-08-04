@@ -1,12 +1,29 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="m-4 row">
+  <div class="container-fluid col">
+    <p class="text-center fw-bold">
+        Alfresco a Mediterrean Dinner experience
+    </p>
 
-<div>
-    <img src="" alt="">
-</div>
-<div>
-    <span>Alfresco Restaurant</span>
+  <div id="carousel-container" class="carousel slide col" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="10000">
+          <img src="https://res.cloudinary.com/doufojxse/image/upload/v1659534808/media/spanish-tapas-platter_itahkz.jpg" class="d-block w-100 vh-40" alt="...">
+        </div>
+        <div class="carousel-item" data-bs-interval="10000">
+          <img src="https://res.cloudinary.com/doufojxse/image/upload/v1659534841/media/andalusian-food-recipes-dishes-710x533_vivakr.jpg" class="d-block w-100 vh-40" alt="...">
+        </div>
+      </div>
+    </div>
+
+  <div class="container-fluid col mt-5 ">
+      <p class="text-center fw-bold">
+          Try our on season dishes
+      </p>
+    
+  </div>
 </div>
 
 {% endblock %}
