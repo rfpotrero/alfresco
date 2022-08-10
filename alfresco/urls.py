@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from website.views import get_home, get_menu, get_contact
+from website.views import get_home, get_menu, get_contact, get_reservations
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,4 +23,5 @@ urlpatterns = [
     path('home', get_home, name='home'),
     path('menu', get_menu, name='menu'),
     path('contact', get_contact, name='contact'),
+    path('reservations', get_reservations, name='reservations'),
 ]
