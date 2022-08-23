@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from .forms import ReservationForm
 
 
 def get_home(request):
@@ -14,4 +16,14 @@ def get_contact(request):
 
 
 def get_reservations(request):
-    return render(request, '../templates/reservations.html')
+
+    form = ReservationForm(request.POST)
+
+    if request.method == "POST":
+        form = ReservationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('../templates/reservations.html')
+    else:
+        form = ReservationForm
+        return render(request, '../templates/reservations.html', {'form': form})
