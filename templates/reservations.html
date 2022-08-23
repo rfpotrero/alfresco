@@ -4,16 +4,7 @@
 
 <form action="" method="post">
     {% csrf_token %}
-    <label for="name">Name</label>
-    <input id="name" type="text" name="name">
-    <label for="phone">Phone</label>
-    <input id="phone" type="text" name="phone">
-    <label for="email">Email</label>
-    <input id="email" type="email" name="email">
-    <label for="date">Reservation Date</label>
-    <input id="name" type="date" name="date">
-    <label for="numberofpeople">Number of People</label>
-    <input id="name" type="number" name="numberofpeople" value="2">
+    {{ form.as_p }}
     <input type="submit" value="Make Reservation">
 </form>
 
