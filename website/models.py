@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 
 class Reservations(models.Model):
-    date = models.DateField()
+    date = models.DateTimeField()
     name = models.CharField(max_length=100)
     phone = models.IntegerField()
     email = models.EmailField()
@@ -13,7 +13,8 @@ class Reservations(models.Model):
     reservation_code = ShortUUIDField(
         length=7,
         max_length=10,
-        alphabet="abcdefg1234",)
+        alphabet="abcdefg1234",
+        editable=False)
     reservation_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
     class Meta:
