@@ -16,15 +16,12 @@ def get_contact(request):
 
 
 def get_reservations(request):
-    reserved = False
     if request.method == "POST":
         form = ReservationForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/reservations?reserved=True')
+            form_data = form.save()
+            return render(request, '../templates/confirmed.html', {'form_data': form_data})
     else:
         form = ReservationForm
-        if 'reserved' in request.GET:
-            reserved = True
-
-    return render(request, '../templates/reservations.html', {'form': form, 'reserved': reserved})
+        return render(request, '../templates/reservations.html', {'form': form})
