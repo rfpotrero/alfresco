@@ -1,7 +1,6 @@
 import uuid
 from shortuuid.django_fields import ShortUUIDField
 from django.db import models
-from django.contrib.auth.models import User
 
 
 class Reservations(models.Model):

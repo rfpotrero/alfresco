@@ -1,6 +1,7 @@
+from re import search
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
 from .forms import ReservationForm
+from .models import Reservations
 
 
 def get_home(request):
@@ -25,3 +26,12 @@ def get_reservations(request):
     else:
         form = ReservationForm
         return render(request, '../templates/reservations.html', {'form': form})
+
+
+def get_search_reservation(request):
+    if request.method == "POST":  
+        searched = request.POST['searched']  
+        print(searched)
+        reservation = Reservations.objects.get(reservation_code__exact= searched)
+        print(reservation.phone)
+        return render(request, '../templates/search_reservation.html', {'searched': searched, 'reservation': reservation})
