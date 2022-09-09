@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    
+    <h1>Your reservation:</h1>
+
+    <ul> Name: {{ reservation.name }}</ul>
+    <ul> Phone: {{ reservation.phone }}</ul>
+    <ul> Email: {{ reservation.email }}</ul>
+    <ul> Number of people: {{ reservation.numberofpeople }}</ul>
+    <ul> Date for the reservation : {{ reservation.date }}</ul>
+    <ul> Reservation Reference: {{ reservation.reservation_code }} </ul>
+
+{% endblock %}

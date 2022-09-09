@@ -1,18 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-    {% if reserved %}
+   
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Make Reservation">
+    </form>
 
-        This is working fine!
+    <form action="{% url 'search_reservation' %}" method=POST>
 
-    {% else %}
+        {% csrf_token %}
+        
+        <input type="search" placeholder="Reservation Code" name="searched">
+        <button type="submit">Search</button>
 
-        <form action="" method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="Make Reservation">
-        </form>
-
-    {% endif %}
+    </form>
 
 {% endblock %}
