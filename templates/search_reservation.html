@@ -3,7 +3,7 @@
 {% block content %}
 
     
-    <h1>Your reservation:</h1>
+    <h1>Your reservation :</h1>
 
     <ul> Name: {{ reservation.name }}</ul>
     <ul> Phone: {{ reservation.phone }}</ul>
@@ -11,5 +11,8 @@
     <ul> Number of people: {{ reservation.numberofpeople }}</ul>
     <ul> Date for the reservation : {{ reservation.date }}</ul>
     <ul> Reservation Reference: {{ reservation.reservation_code }} </ul>
+
+
+    <a href="{% url 'delete_reservation' reservation.reservation_code %}">Delete</a>
 
 {% endblock %}

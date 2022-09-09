@@ -1,5 +1,5 @@
-from re import search
 from django.shortcuts import render
+from django.shortcuts import redirect
 from .forms import ReservationForm
 from .models import Reservations
 
@@ -35,3 +35,9 @@ def get_search_reservation(request):
         reservation = Reservations.objects.get(reservation_code__exact= searched)
         print(reservation.phone)
         return render(request, '../templates/search_reservation.html', {'searched': searched, 'reservation': reservation})
+
+
+def get_delete_reservation(request, reservation_code):
+    delete_reservation = Reservations.objects.get(reservation_code__exact= reservation_code)
+    delete_reservation.delete()
+    return redirect('reservations')
