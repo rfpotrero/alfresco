@@ -1,5 +1,4 @@
-from django.shortcuts import render
-from django.shortcuts import redirect
+from django.shortcuts import render, redirect
 from .forms import ReservationForm
 from .models import Reservations
 
@@ -41,3 +40,13 @@ def get_delete_reservation(request, reservation_code):
     delete_reservation = Reservations.objects.get(reservation_code__exact= reservation_code)
     delete_reservation.delete()
     return redirect('reservations')
+
+
+def get_update_reservation(request, reservation_code):
+    reservation = Reservations.objects.get(reservation_code__exact= reservation_code)
+    form = ReservationForm(request.POST or None, instance=reservation)
+    if form.is_valid():
+        form.save()
+        return render(request, '../templates/search_reservation.html', {'reservation': reservation})
+
+    return render(request, '../templates/update_reservation.html', {'reservation': reservation, 'form': form})
