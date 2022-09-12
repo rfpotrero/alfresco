@@ -15,15 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from website.views import *
+from website import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', get_home, name='home'),
-    path('home', get_home, name='home'),
-    path('menu', get_menu, name='menu'),
-    path('contact', get_contact, name='contact'),
-    path('reservations', get_reservations, name='reservations'),
-    path('search_reservation', get_search_reservation, name='search_reservation'),
-    path('delete_reservation/<reservation_code>', get_delete_reservation, name='delete_reservation'),
+    path('', views.get_home, name='home'),
+    path('home', views.get_home, name='home'),
+    path('menu', views.get_menu, name='menu'),
+    path('contact', views.get_contact, name='contact'),
+    path('reservations', views.get_reservations, name='reservations'),
+    path('search_reservation', views.get_search_reservation, name='search_reservation'),
+    path('delete_reservation/<reservation_code>', views.get_delete_reservation, name='delete_reservation'),
+    path('update_reservation/<reservation_code>', views.get_update_reservation, name='update_reservation'),
 ]
