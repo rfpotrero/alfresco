@@ -7,5 +7,3 @@ class ReservationForm(ModelForm):
         fields = ('date', 'name', 'phone', 'email', 'numberofpeople') 
 
 
-form = ReservationForm()
-
