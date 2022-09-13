@@ -12,9 +12,15 @@
 
         {% csrf_token %}
         
-        <input type="search" placeholder="Reservation Code" name="searched">
+        <input type="search" placeholder="Reservation Code" name="searched"> 
         <button type="submit">Search</button>
 
     </form>
+
+    <div>
+        {% for message in messages %}
+            {{ message }}
+        {% endfor%}
+    </div>
 
 {% endblock %}
