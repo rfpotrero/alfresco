@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary',
     'website',
+    'business_login',
 ]
 
 MESSAGE_TAGS = {
