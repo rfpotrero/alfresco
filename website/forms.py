@@ -2,6 +2,7 @@ from django import forms
 from django.forms import ModelForm
 from .models import Reservations
 
+
 class ReservationForm(ModelForm):
     class Meta:
         model = Reservations
@@ -9,4 +10,3 @@ class ReservationForm(ModelForm):
         widgets = {
             'date': forms.DateTimeInput(format='%Y-%m-%d %H:%M')
         }
-

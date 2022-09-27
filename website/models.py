@@ -14,7 +14,8 @@ class Reservations(models.Model):
         max_length=10,
         alphabet="abcdefg1234",
         editable=False)
-    reservation_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    reservation_id = models.UUIDField(primary_key=True, default=uuid.uuid4,
+                                      editable=False)
 
     class Meta:
         ordering = ['-date']
@@ -22,4 +23,3 @@ class Reservations(models.Model):
 
     def __str__(self):
         return self.name
-
