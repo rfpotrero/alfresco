@@ -8,5 +8,9 @@ class ReservationForm(ModelForm):
         model = Reservations
         fields = ('date', 'name', 'phone', 'email', 'numberofpeople')
         widgets = {
-            'date': forms.DateTimeInput(format='%Y-%m-%d %H:%M')
+            'date': forms.DateTimeInput(attrs={'class': 'form-control'},
+                                        format='%Y-%m-%d %H:%M'),
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'phone': forms.TextInput(attrs={'class': 'form-control'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control'})
         }
