@@ -4,6 +4,9 @@ from .models import Reservations
 
 
 class ReservationForm(ModelForm):
+    """
+    Form to capture reservations from clients.
+    """
     class Meta:
         model = Reservations
         fields = ('date', 'name', 'phone', 'email', 'numberofpeople')
