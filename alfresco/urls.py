@@ -24,9 +24,15 @@ urlpatterns = [
     path('menu', views.get_menu, name='menu'),
     path('contact', views.get_contact, name='contact'),
     path('reservations', views.get_reservations, name='reservations'),
-    path('search_reservation', views.get_search_reservation, name='search_reservation'),
-    path('delete_reservation/<reservation_code>', views.get_delete_reservation, name='delete_reservation'),
-    path('update_reservation/<reservation_code>', views.get_update_reservation, name='update_reservation'),
+    path('search_reservation', views.get_search_reservation,
+         name='search_reservation'),
+    path('delete_reservation/<reservation_code>', views.get_delete_reservation,
+         name='delete_reservation'),
+    path('update_reservation/<reservation_code>', views.get_update_reservation,
+         name='update_reservation'),
     path('business_login/', include('django.contrib.auth.urls')),
     path('business_login/', include('business_login.urls')),
 ]
+
+
+handler404 = 'website.views.error_404'
