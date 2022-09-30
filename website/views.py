@@ -63,3 +63,7 @@ def get_update_reservation(request, reservation_code):
 
     return render(request, '../templates/update_reservation.html',
                            {'reservation': reservation, 'form': form})
+
+
+def error_404(request, exception):
+    return render(request, '../templates/error404.html')
