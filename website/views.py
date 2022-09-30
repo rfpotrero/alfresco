@@ -17,6 +17,10 @@ def get_contact(request):
 
 
 def get_reservations(request):
+    """
+    This fuction capture and saves the information entered in the
+    form.
+    """
     if request.method == "POST":
         form = ReservationForm(request.POST)
         if form.is_valid():
@@ -31,6 +35,10 @@ def get_reservations(request):
 
 
 def get_search_reservation(request):
+    """
+    Search for existing reservation using the reservation code.
+    Raise an error if the code does not exist.
+    """
     if request.method == "POST":
         try:
             searched = request.POST['searched']
@@ -59,7 +67,8 @@ def get_update_reservation(request, reservation_code):
     form = ReservationForm(request.POST or None, instance=reservation)
     if form.is_valid():
         form.save()
-        return render(request, '../templates/search_reservation.html', {'reservation': reservation})
+        return render(request, '../templates/search_reservation.html',
+                               {'reservation': reservation})
 
     return render(request, '../templates/update_reservation.html',
                            {'reservation': reservation, 'form': form})

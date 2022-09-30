@@ -4,6 +4,9 @@ from django.db import models
 
 
 class Reservations(models.Model):
+    """
+    Model for client reservations
+    """
     date = models.DateTimeField()
     name = models.CharField(max_length=100)
     phone = models.IntegerField()
