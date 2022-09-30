@@ -1,13 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1>Your reservations is confirmed</h1>
 
-<ul> Name: {{ form_data.name }}</ul>
-<ul> Phone: {{ form_data.phone }}</ul>
-<ul> Email: {{ form_data.email }}</ul>
-<ul> Number of people: {{ form_data.numberofpeople }}</ul>
-<ul> Date for the reservation : {{ form_data.date }}</ul>
-<ul> Reservation Reference: {{ form_data.reservation_code }} </ul>
-
+<div class="container mt-2">
+    <h1>Your reservations is confirmed</h1>
+    <ul class="list-unstyled p-3">
+        <li>Name: {{ form_data.name }}</li>
+        <li>Phone: {{ form_data.phone }}</li>
+        <li>Email: {{ form_data.email }}</li>
+        <li>Number of people: {{ form_data.numberofpeople }}</li>
+        <li>Date for the reservation : {{ form_data.date }}</li>
+        <li>Reservation Reference: {{ form_data.reservation_code }} </li>
+    </ul>
+</div>
 {% endblock %}
