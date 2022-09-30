@@ -2,18 +2,20 @@
 
 {% block content %}
 
-    
+<div class="container mt-3">
     <h1>Your reservation :</h1>
+    <ul class="list-unstyled p-3"> 
+        <li class="p-1">Name: {{ reservation.name }}</li>
+        <li class="p-1">Phone: {{ reservation.phone }}</li>
+        <li class="p-1">Email: {{ reservation.email }}</li>
+        <li class="p-1">Number of people: {{ reservation.numberofpeople }}</li>
+        <li class="p-1">Date for the reservation : {{ reservation.date }}</li>
+        <li class="p-1">Reservation Reference: {{ reservation.reservation_code }}</li>
+    </ul>
+</div>
 
-    <ul> Name: {{ reservation.name }}</ul>
-    <ul> Phone: {{ reservation.phone }}</ul>
-    <ul> Email: {{ reservation.email }}</ul>
-    <ul> Number of people: {{ reservation.numberofpeople }}</ul>
-    <ul> Date for the reservation : {{ reservation.date }}</ul>
-    <ul> Reservation Reference: {{ reservation.reservation_code }} </ul>
-
-
-    <a href="{% url 'delete_reservation' reservation.reservation_code %}">Delete</a>
-    <a href="{% url 'update_reservation' reservation.reservation_code %}">Update</a>
-
+<div class="container">
+    <a class="btn btn-danger" href="{% url 'delete_reservation' reservation.reservation_code %}">Delete</a>
+    <a class="btn btn-primary" href="{% url 'update_reservation' reservation.reservation_code %}">Update</a>
+</div>
 {% endblock %}
