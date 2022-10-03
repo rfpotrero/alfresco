@@ -2,6 +2,7 @@
 
 {% block content %}
 <div class="container mt-2 p-2" >
+    <!-- Form to capture client reservations -->
     <form action="" method="post">
         {% csrf_token %}
         {{ form.as_p }}
@@ -23,6 +24,7 @@
 </form>
 
 <div>
+    <!-- Display message when a searched resgitration doesn't exist -->
     {% for message in messages %}
         {{ message }}
     {% endfor%}
