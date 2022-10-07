@@ -33,7 +33,6 @@
      * This external library is used to generate short reservations code to allow user search for their reservations. 
 
 ## Testing
-   * code validation
    # Test Cases 
    * A user can browse and navigate the site. 
      - Expected behaviour: The page will load and the user will be able to navigate the page. 
@@ -51,11 +50,17 @@
    * A user can delete their reservation
      - Expected behaviour: Upon clicking in the delete button the reservation warning message will appear asking for confirmation before
      deleting the existing reservation. 
+       - **Passed**: The modal warning appear asking the user to confirm the deletion 
+          ![delete_reservation](assets/images/delete_reservation.png)
    * A owner can login to the private part of the site
      - Expected behaviour: A business owner can use the Private link in the navbar to login, using their admin login
+       - **Passed**:Login is accepted and the page redirect automatically to the list or reservations for the day
    * A owner can see the registration for the day
      - Expected Behaviour: Upon login in the private area it will automatically redirect to a page displaying the day reservations
+       - **Passed**: Reservations for the day are displayed upon login
+         - ![today_reservations](assets/images/today_reservation.png)
    # Fixed bugs
+     - #47 Adding a space between characters in the phone field breaks the reservation form. - **Resolved**
    # Supported screens and Browsers
 ## Deployment
    * Heroku deployment
