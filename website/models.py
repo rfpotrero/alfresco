@@ -1,6 +1,7 @@
 import uuid
 from shortuuid.django_fields import ShortUUIDField
 from django.db import models
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Reservations(models.Model):
@@ -9,7 +10,7 @@ class Reservations(models.Model):
     """
     date = models.DateTimeField()
     name = models.CharField(max_length=100)
-    phone = models.IntegerField()
+    phone = PhoneNumberField()
     email = models.EmailField()
     numberofpeople = models.IntegerField(default=2)
     reservation_code = ShortUUIDField(

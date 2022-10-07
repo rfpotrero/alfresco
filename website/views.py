@@ -28,6 +28,7 @@ def get_reservations(request):
             form_data = form.save()
             return render(request, '../templates/confirmed.html',
                                    {'form_data': form_data})
+        print(form.errors)
     else:
         form = ReservationForm
         return render(request, '../templates/reservations.html',
@@ -68,8 +69,8 @@ def get_update_reservation(request, reservation_code):
     if form.is_valid():
         form.save()
         return render(request, '../templates/search_reservation.html',
-                               {'reservation': reservation})
-
+                               {'reservation': reservation})  
+    print(form.errors)
     return render(request, '../templates/update_reservation.html',
                            {'reservation': reservation, 'form': form})
 
