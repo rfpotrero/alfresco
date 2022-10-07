@@ -73,6 +73,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'alfresco.urls'
+LOGIN_URL = '/business_login/login_user'
 
 TEMPLATES = [
     {

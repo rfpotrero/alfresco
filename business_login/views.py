@@ -1,6 +1,7 @@
 from datetime import datetime
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from website.models import Reservations
 
@@ -21,7 +22,7 @@ def login_user(request):
     else:
         return render(request, 'authentication/login.html', {})
 
-
+@login_required
 def reservation_list(request):
     now = datetime.now()
     today = now.date()

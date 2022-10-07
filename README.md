@@ -60,7 +60,8 @@
        - **Passed**: Reservations for the day are displayed upon login
          - ![today_reservations](assets/images/today_reservation.png)
    # Fixed bugs
-     - #47 Adding a space between characters in the phone field breaks the reservation form. - **Resolved**
+     - Adding a space between characters in the phone field breaks the reservation form #47 - **Resolved**
+     - Business_login/reservation_list view was displaying reservations list regardless of login status #48 - **Resolved**
    # Supported screens and Browsers
 ## Deployment
    * Heroku deployment
