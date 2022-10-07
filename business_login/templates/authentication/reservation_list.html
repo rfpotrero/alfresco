@@ -2,12 +2,18 @@
 
 {% block content %}
 
+<div class="container text-center mt-4">
+    <h1>Today's Reservations</h1>
+</div>
+
+<div class="container text-center mt-4">
 {% for reservation in reservation_list %}
-    <p>{{ reservation.name }}</p>
-    <p>{{ reservation.date }}</p>
-    <p>{{ reservation.phone }}</p>
-    <p>{{ reservation.numberofpeople }}</p>
+    <p>Name: {{ reservation.name }}</p>
+    <p>Date: {{ reservation.date }}</p>
+    <p>Phone Number: {{ reservation.phone }}</p>
+    <p>Number of people: {{ reservation.numberofpeople }}</p>
+    <p>Reservation reference: {{ reservation.reservation_code }}</p>
     <br>
 {% endfor %}
-
+</div>
 {% endblock %}
