@@ -19,11 +19,12 @@ from website import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.get_home, name='home'),
-    path('home', views.get_home, name='home'),
-    path('menu', views.get_menu, name='menu'),
-    path('contact', views.get_contact, name='contact'),
-    path('reservations', views.get_reservations, name='reservations'),
+    path('', views.home, name='home'),
+    path('accounts/', include('allauth.urls')),
+    path('home', views.home, name='home'),
+    path('menu', views.menu, name='menu'),
+    path('contact', views.contact, name='contact'),
+    path('reservations', views.reservations, name='reservations'),
     path('search_reservation', views.get_search_reservation,
          name='search_reservation'),
     path('delete_reservation/<reservation_code>', views.get_delete_reservation,

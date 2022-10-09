@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'django.contrib.redirects',
     'cloudinary_storage',
     'django.contrib.staticfiles',
@@ -73,7 +76,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'alfresco.urls'
-LOGIN_URL = '/business_login/login_user'
+
+SITE_ID = 1
+
+LOGIN_REDIRECT_URL = '/reservations'
+LOGOUT_REDIRECT_URL = '/'
 
 TEMPLATES = [
     {
