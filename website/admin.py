@@ -5,5 +5,5 @@ from .models import Reservations
 
 @admin.register(Reservations)
 class ReservationsAdmin(admin.ModelAdmin):
-    list_display = ('date', 'name', 'phone', 'reservation_code')
-    ordering = ('date',)
+    list_display = ('date_reservation', 'reservation_code')
+    ordering = ('date_reservation',)
