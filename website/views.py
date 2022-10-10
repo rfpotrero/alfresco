@@ -1,28 +1,27 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import ReservationForm
-from .models import Reservations
+from .models import Reservations, Client
+from .forms import ReservationsForm
 
-
-def get_home(request):
+def home(request):
     return render(request, '../templates/home.html')
 
 
-def get_menu(request):
+def menu(request):
     return render(request, '../templates/menu.html')
 
 
-def get_contact(request):
+def contact(request):
     return render(request, '../templates/contact.html')
 
 
-def get_reservations(request):
+def reservations(request):
     """
     This fuction capture and saves the information entered in the
     form.
     """
     if request.method == "POST":
-        form = ReservationForm(request.POST)
+        form = ReservationsForm(request.POST)
         if form.is_valid():
             form.save()
             form_data = form.save()
@@ -30,7 +29,7 @@ def get_reservations(request):
                                    {'form_data': form_data})
         print(form.errors)
     else:
-        form = ReservationForm
+        form = ReservationsForm
         return render(request, '../templates/reservations.html',
                                {'form': form})
 
