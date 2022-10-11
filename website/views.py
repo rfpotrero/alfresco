@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import Reservations, Client
+from .models import Reservations
 from .forms import ReservationsForm
 
 def home(request):
@@ -24,6 +24,7 @@ def reservations(request):
         form = ReservationsForm(request.POST)
         if form.is_valid():
             form.save()
+            form.instance.client = request.user
             form_data = form.save()
             return render(request, '../templates/confirmed.html',
                                    {'form_data': form_data})
@@ -61,10 +62,10 @@ def get_delete_reservation(request, reservation_code):
     return redirect('reservations')
 
 
-def get_update_reservation(request, reservation_code):
+def update_reservation(request, reservation_code):
     reservation = Reservations.objects.get(
         reservation_code__exact=reservation_code)
-    form = ReservationForm(request.POST or None, instance=reservation)
+    form = ReservationsForm(request.POST or None, instance=reservation)
     if form.is_valid():
         form.save()
         return render(request, '../templates/search_reservation.html',
@@ -73,6 +74,15 @@ def get_update_reservation(request, reservation_code):
     return render(request, '../templates/update_reservation.html',
                            {'reservation': reservation, 'form': form})
 
+
+def client_reservations(request):
+    if request.user.is_authenticated:
+        print(request.user)
+        my_reservations = Reservations.objects.filter(client=request.user)
+        print(my_reservations)
+        return render(request, '../templates/client_reservations.html',
+        {'my_reservations': my_reservations})
+    
 
 def error_404(request, exception):
     return render(request, '../templates/error404.html')
