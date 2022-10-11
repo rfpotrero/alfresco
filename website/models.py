@@ -1,6 +1,8 @@
 from shortuuid.django_fields import ShortUUIDField
 from django.db import models
+from django.contrib.auth.models import User
 from phonenumber_field.modelfields import PhoneNumberField
+
 
 GUESTS = (
     ('1', '1'),
@@ -21,19 +23,6 @@ TIME = (
 )
 
 
-class Client(models.Model):
-    """
-    Moldel to store new clients
-    """
-    client_id = models.AutoField(primary_key=True)
-    name_client = models.CharField(max_length=100)
-    email_client = models.EmailField(unique=True, max_length=200)
-    phonenumber_client =  PhoneNumberField()
-    
-    def __str__(self):
-        return self.email_client
-
-
 class Reservations(models.Model):
     """
     Model for client reservations
@@ -42,8 +31,11 @@ class Reservations(models.Model):
     date_reservation = models.DateField(max_length=30)
     time_reservation = models.CharField(max_length=30,
                                         choices=TIME, default='18:00')
-    client = models.ForeignKey(Client, related_name="reservations",
+    client = models.ForeignKey(User, related_name="reservations",
                                on_delete=models.SET_NULL, null=True)
+    name_client = models.CharField(max_length=100)
+    email_client = models.EmailField(max_length=200)
+    phonenumber_client = PhoneNumberField()
     numberofpeople = models.CharField(max_length=2,
                                       choices=GUESTS, default='2')
     reservation_code = ShortUUIDField(
@@ -55,5 +47,4 @@ class Reservations(models.Model):
     class Meta:
         verbose_name_plural = "Reservations"
 
-    def __str__(self):
-        return self.client.name_client
+    
