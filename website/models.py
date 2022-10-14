@@ -46,5 +46,3 @@ class Reservations(models.Model):
 
     class Meta:
         verbose_name_plural = "Reservations"
-
-    

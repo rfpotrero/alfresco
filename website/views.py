@@ -1,5 +1,8 @@
+from datetime import datetime
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from .models import Reservations
 from .forms import ReservationsForm
 
@@ -15,20 +18,31 @@ def contact(request):
     return render(request, '../templates/contact.html')
 
 
-def reservations(request):
+def make_reservation(request):
     """
-    This fuction capture and saves the information entered in the
+    Capture and saves the information entered in the
     form.
     """
     if request.method == "POST":
         form = ReservationsForm(request.POST)
+        # Double reservation verification based in User logged, time and date.
         if form.is_valid():
-            form.save()
+            time = request.POST.get('time_reservation')
+            date = request.POST.get('date_reservation')
             form.instance.client = request.user
+            duplicate_reservations = Reservations.objects.filter(
+                Q(time_reservation=time),
+                Q(date_reservation=date),
+                Q(client=request.user)
+            )
+            if len(duplicate_reservations) > 0:
+                messages.error(request, 'There is an existing reservation')
+                return render(request, '../templates/reservations.html',
+                             {'form': form})
+            form.save()
             form_data = form.save()
             return render(request, '../templates/confirmed.html',
-                                   {'form_data': form_data})
-        print(form.errors)
+                                {'form_data': form_data})
     else:
         form = ReservationsForm
         return render(request, '../templates/reservations.html',
@@ -56,6 +70,9 @@ def get_search_reservation(request):
 
 
 def get_delete_reservation(request, reservation_code):
+    """
+    Function to delete an exsiting reservation
+    """
     delete_reservation = Reservations.objects.get(
         reservation_code__exact=reservation_code)
     delete_reservation.delete()
@@ -63,6 +80,9 @@ def get_delete_reservation(request, reservation_code):
 
 
 def update_reservation(request, reservation_code):
+    """
+    Function to update an existing reservation
+    """
     reservation = Reservations.objects.get(
         reservation_code__exact=reservation_code)
     form = ReservationsForm(request.POST or None, instance=reservation)
@@ -74,15 +94,16 @@ def update_reservation(request, reservation_code):
     return render(request, '../templates/update_reservation.html',
                            {'reservation': reservation, 'form': form})
 
-
+@login_required
 def client_reservations(request):
+    now = datetime.now()
+    today = now.date()
     if request.user.is_authenticated:
-        print(request.user)
-        my_reservations = Reservations.objects.filter(client=request.user)
+        my_reservations = Reservations.objects.filter(client=request.user).filter(date_reservation__gte=today)
         print(my_reservations)
         return render(request, '../templates/client_reservations.html',
         {'my_reservations': my_reservations})
-    
+ 
 
 def error_404(request, exception):
     return render(request, '../templates/error404.html')
