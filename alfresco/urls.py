@@ -28,7 +28,7 @@ urlpatterns = [
     path('make_reservation', views.make_reservation, name='make_reservation'),
     path('search_reservation', views.get_search_reservation,
          name='search_reservation'),
-    path('delete_reservation/<reservation_code>', views.get_delete_reservation,
+    path('delete_reservation/<reservation_code>', views.delete_reservation,
          name='delete_reservation'),
     path('update_reservation/<reservation_code>', views.update_reservation,
          name='update_reservation'),

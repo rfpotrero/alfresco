@@ -69,14 +69,14 @@ def get_search_reservation(request):
             return redirect('reservations')
 
 
-def get_delete_reservation(request, reservation_code):
+def delete_reservation(request, reservation_code):
     """
-    Function to delete an exsiting reservation
+    Delete an exsiting reservation
     """
     delete_reservation = Reservations.objects.get(
         reservation_code__exact=reservation_code)
     delete_reservation.delete()
-    return redirect('reservations')
+    return redirect('client_reservations')
 
 
 def update_reservation(request, reservation_code):
