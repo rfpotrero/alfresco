@@ -7,10 +7,11 @@
 </div>
 {% for reservation in my_reservations %}
 <div class="d-flex flex-column align-items-center">
-<div class="bg-light border p-2">
+<div class="bg-light border p-1">
   
   <div>
         <p>Date: {{ reservation.date_reservation }} </p>
+        <p>Time: {{ reservation.time_reservation }} </p>
         <p>Number of people: {{ reservation.numberofpeople }} </p>
         <p>Reservation reference: {{ reservation.reservation_code }} </p>
         <br> 
