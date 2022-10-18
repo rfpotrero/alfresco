@@ -83,27 +83,31 @@ def update_reservation(request, reservation_code):
     """
     Function to update an existing reservation
     """
+    current_client = request.user
     reservation = Reservations.objects.get(
         reservation_code__exact=reservation_code)
     form = ReservationsForm(request.POST or None, instance=reservation)
-    if form.is_valid():
-        time = request.POST.get('time_reservation')
-        date = request.POST.get('date_reservation')
-        form.instance.client = request.user
-        # Double reservation verification based in User logged, time and date.
-        duplicate_reservations = duplicate_reservations_verification(time, date, form)
-        print(duplicate_reservations)
-        if len(duplicate_reservations) > 0:
-            messages.error(request, 'There is an existing reservation')
-            return render(request, '../templates/update_reservation.html',
-                                   {'form': form, 'reservation': reservation})
-        form.save()
-        form_data = form.save()
-        return render(request, '../templates/confirmed.html',
+    # Verify that the reservation belongs to the current logged user
+    if current_client == reservation.client:
+        if form.is_valid():
+            time = request.POST.get('time_reservation')
+            date = request.POST.get('date_reservation')
+            form.instance.client = request.user
+            # Double reservation verification based in User logged, time and date.
+            duplicate_reservations = duplicate_reservations_verification(time, date, form)
+            if len(duplicate_reservations) > 0:
+                messages.error(request, 'There is an existing reservation')
+                return render(request, '../templates/update_reservation.html',
+                                    {'form': form, 'reservation': reservation})
+            form.save()
+            form_data = form.save()
+            return render(request, '../templates/confirmed.html',
                                    {'form_data': form_data})
 
-    return render(request, '../templates/update_reservation.html',
-                           {'reservation': reservation, 'form': form})
+        return render(request, '../templates/update_reservation.html',
+                               {'reservation': reservation, 'form': form})
+    return render(request, '../templates/error404.html')
+
 
 @login_required
 def client_reservations(request):
