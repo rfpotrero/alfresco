@@ -2,11 +2,14 @@
 
 {% block content %}
 
-<h1>Your upcoming reservations</h1>
-
-<div>
-  {% for reservation in my_reservations %}
-  <div class="container">
+<div class="d-flex justify-content-center">
+  <h1>Your reservations</h1>
+</div>
+{% for reservation in my_reservations %}
+<div class="d-flex flex-column align-items-center">
+<div class="bg-light border p-2">
+  
+  <div>
         <p>Date: {{ reservation.date_reservation }} </p>
         <p>Number of people: {{ reservation.numberofpeople }} </p>
         <p>Reservation reference: {{ reservation.reservation_code }} </p>
@@ -18,6 +21,7 @@
         Delete
     </button>
     <a class="btn btn-primary" href="{% url 'update_reservation' reservation.reservation_code %}">Update</a>
+</div>
 </div>
 <!--Delete Modal -->
 
@@ -41,10 +45,11 @@
   </div>
 </div>
   {% endfor %}
-</div>
 
-<div class="container m-5">
-  <a class="btn btn-primary" href="{% url 'make_reservation' %}">Make Reservation</a>
+
+<div class="d-flex justify-content-center m-3">
+  <a class="btn btn-primary" href="{% url 'make_reservation' %}">Make a reservation</a>
+</div>
 </div>
 
 {% endblock %}

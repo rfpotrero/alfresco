@@ -1,16 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="container mt-2">
+<div class="d-flex justify-content-center">
+<div class="bg-light border ">
     <h1>Your reservations is confirmed</h1>
-    <ul class="list-unstyled p-3">
-        <li>Name: {{ form_data.name_client }}</li>
-        <li>Phone: {{ form_data.phonenumber_client }}</li>
-        <li>Email: {{ form_data.email_client }}</li>
-        <li>Number of people: {{ form_data.numberofpeople }}</li>
-        <li>Date for the reservation : {{ form_data.date_reservation }}</li>
-        <li>Reservation Reference: {{ form_data.reservation_code }} </li>
+    <ul class="list-unstyled">
+        <li class="p-1">Name: {{ form_data.name_client }}</li>
+        <li class="p-1">Phone: {{ form_data.phonenumber_client }}</li>
+        <li class="p-1">Email: {{ form_data.email_client }}</li>
+        <li class="p-1">Number of people: {{ form_data.numberofpeople }}</li>
+        <li class="p-1">Date for the reservation : {{ form_data.date_reservation }}</li>
+        <li class="p-1">Reservation Reference: {{ form_data.reservation_code }} </li>
     </ul>
+</div>
 </div>
 
 {% endblock %}
