@@ -92,13 +92,15 @@ def update_reservation(request, reservation_code):
         form.instance.client = request.user
         # Double reservation verification based in User logged, time and date.
         duplicate_reservations = duplicate_reservations_verification(time, date, form)
+        print(duplicate_reservations)
         if len(duplicate_reservations) > 0:
             messages.error(request, 'There is an existing reservation')
-            return render(request, '../templates/search_reservation.html',
-                                   {'reservation': reservation})
+            return render(request, '../templates/update_reservation.html',
+                                   {'form': form, 'reservation': reservation})
         form.save()
-        return render(request, '../templates/search_reservation.html',
-                               {'reservation': reservation})
+        form_data = form.save()
+        return render(request, '../templates/confirmed.html',
+                                   {'form_data': form_data})
 
     return render(request, '../templates/update_reservation.html',
                            {'reservation': reservation, 'form': form})
