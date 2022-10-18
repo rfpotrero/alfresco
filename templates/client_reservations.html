@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="d-flex justify-content-center">
+  <h1>Your reservations</h1>
+</div>
+{% for reservation in my_reservations %}
+<div class="d-flex flex-column align-items-center">
+<div class="bg-light border p-2">
+  
+  <div>
+        <p>Date: {{ reservation.date_reservation }} </p>
+        <p>Number of people: {{ reservation.numberofpeople }} </p>
+        <p>Reservation reference: {{ reservation.reservation_code }} </p>
+        <br> 
+  </div>    
+  <div class="container">
+    <!-- Buttons to trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#delete_modal">
+        Delete
+    </button>
+    <a class="btn btn-primary" href="{% url 'update_reservation' reservation.reservation_code %}">Update</a>
+</div>
+</div>
+<!--Delete Modal -->
+
+<div class="modal fade" id="delete_modal" tabindex="-1" aria-labelledby="Delete modeal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="delete_modal"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <p>Are you sure you want to delete your reservation?</p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <a class="btn btn-danger" href="{% url 'delete_reservation' reservation.reservation_code %}">Delete</a>
+      </div>
+    </div>
+  </div>
+</div>
+  {% endfor %}
+
+
+<div class="d-flex justify-content-center m-3">
+  <a class="btn btn-primary" href="{% url 'make_reservation' %}">Make a reservation</a>
+</div>
+</div>
+
+{% endblock %}

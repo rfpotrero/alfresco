@@ -8,26 +8,16 @@
         {{ form.as_p }}
         <input class="btn btn-primary" type="submit" value="Make Reservation">
     </form>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 </div>
 
-<div class="cointainer p-2">
-<form class="form-control" action="{% url 'search_reservation' %}" method=POST>
-    {% csrf_token %}
-    <div class="row align-items-center">
-    <div class="col">
-        <input type="search" placeholder="Reservation Code" name="searched"> 
-    </div>
-    <div class="col">
-        <button class="btn btn-primary" type="submit">Search</button>
-    </div>
-    </div>
-</form>
 
-<div>
-    <!-- Display message when a searched resgitration doesn't exist -->
-    {% for message in messages %}
-        {{ message }}
-    {% endfor%}
-</div>
-</div>
+
 {% endblock %}
