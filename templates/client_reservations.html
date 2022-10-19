@@ -1,22 +1,22 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<div class="container-fluid overflow: auto">
 <div class="d-flex justify-content-center">
   <h1>Your reservations</h1>
 </div>
 {% for reservation in my_reservations %}
-<div class="d-flex flex-column align-items-center">
-<div class="bg-light border p-1">
+<div class="d-flex flex-column align-items-center pb-4">
+<div class="bg-light border p-2 m-1">
   
   <div>
         <p>Date: {{ reservation.date_reservation }} </p>
         <p>Time: {{ reservation.time_reservation }} </p>
         <p>Number of people: {{ reservation.numberofpeople }} </p>
-        <p>Reservation reference: {{ reservation.reservation_code }} </p>
+        <p>Reservation code: {{ reservation.reservation_code }} </p>
         <br> 
   </div>    
-  <div class="container">
+  <div class="container mb-1">
     <!-- Buttons to trigger modal -->
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#delete_modal">
         Delete
@@ -50,6 +50,7 @@
 
 <div class="d-flex justify-content-center m-3">
   <a class="btn btn-primary" href="{% url 'make_reservation' %}">Make a reservation</a>
+</div>
 </div>
 </div>
 

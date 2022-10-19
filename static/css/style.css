@@ -4,7 +4,9 @@
     border: none;
     
 }
-
+.body{
+    padding-bottom: 20%;
+}
 .menu-font{
     font-size: 2rem;
 }
