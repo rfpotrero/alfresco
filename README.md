@@ -5,12 +5,12 @@ ___
 ## User Stories
 | User Story                                                                           | Ticket Number |
 | :-----------                                                                         | :----:       |
-| As a visiting user I can browse the website                                          | Number       |
-| As a visiting user I can signup and create an account                                | Number       |
-| As a visiting user I can login to the website                                        | Number       |
-| As a visiting user I can make a reservations                                         | Number       |
-| As a recurrent users I can see my reservations and update them                       | Number       |
-| As an admin  I can see the number of bookings in Admin                               | Number       |
+| As a visiting user I can browse the website                                          | [#2](https://github.com/rfpotrero/alfresco/issues/2)    |
+| As a visiting user I can signup and create an account                                | [#49](https://github.com/rfpotrero/alfresco/issues/49)       |
+| As a visiting user I can login to the website                                        | [#65](https://github.com/rfpotrero/alfresco/issues/65)       |
+| As a visiting user I can make a reservations                                         | [#3](https://github.com/rfpotrero/alfresco/issues/3)       |
+| As a recurrent users I can see my reservations and update them                       | [#25](https://github.com/rfpotrero/alfresco/issues/25)       |
+| As an admin  I can see the number of bookings in Admin                               | [#66](https://github.com/rfpotrero/alfresco/issues/66)       |
 
 ## Features
 ___
@@ -26,7 +26,9 @@ ___
 ## Desing and Diagrams
 ___
    ### Database Diagrams
-   * ER diagram ![HERE](/assets/images/er_diagram.png)
+   * ER diagram 
+     
+     ![HERE](/assets/images/er_diagram.png)
    ### Wireframes
    * Wireframes can be found [HERE](/assets/wireframes).
    
@@ -58,26 +60,27 @@ ___
 * A user can browse and navigate the site. 
    - Expected behaviour: The page will load and the user will be able to navigate the page. 
       - **Passed**: Upon entering the site url the page loads and the user is able to browse the site using the navbar  
-![sitebrowsing](assets/images/testing/sitebrowsing_1.png)
-![sitebrowsing_navbar](assets/images/testing/sitebrowsing_navbar.png)
+  ![sitebrowsing](assets/images/testing/sitebrowsing_1.png)
+  ![sitebrowsing_navbar](assets/images/testing/sitebrowsing_navbar.png)
 * A visiting user can singup and create an account
 - **Passed**: The user is redirected to the reservations page upon account creation. Validation prevent duplicate usernames and email.
       ![signup](/assets/images/testing/signup.png)
       ![validation-signup](/assets/images/testing/validation-signup.png)
 * A logged user can make a reservation
 - Expected behaviour: Users will be presented with a form. Upon filling the form the reservation will be saved into the Database.
-   - **Passed**: Confirmation is displayed after submit the reservation  
+  - **Passed**: Confirmation is displayed after submit the reservation  
       ![confirmed_reservation](/assets/images/testing/confirmed_reservation.png)
       ![reservation_validation](assets/images/testing/reservation_validation.png)
 * A logged user can update their reservation
 - Expected behaviour: Upon clicking in the update button the reservation warning message will appear asking for confirmation before
 updating the existing reservation. 
-![update_reservation](assets/images/testing/update_reservation.png)
+  - **Passed**: Modal appear and after confirm the reservation is updated
+  ![update_reservation](assets/images/testing/update_reservation.png)
 * A logged user can delete their reservation
 - Expected behaviour: Upon clicking in the delete button the reservation warning message will appear asking for confirmation before
 deleting the existing reservation. 
-   - **Passed**: The modal warning appear asking the user to confirm the deletion 
-      ![delete_reservation](assets/images/testing/delete_reservation.png)
+  - **Passed**: The modal warning appear asking the user to confirm the deletion.
+  ![delete_reservation](assets/images/testing/delete_reservation.png)
 * An admin can login to see the reservations
 - Expected behaviour: An admin will be able to see the current reservations.
    - **Passed**:Pass in the admin panel reservations are displayed showing the fields defines in admin.py
