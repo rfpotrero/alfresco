@@ -81,6 +81,7 @@ SITE_ID = 1
 
 LOGIN_REDIRECT_URL = '/reservations'
 LOGOUT_REDIRECT_URL = '/'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 TEMPLATES = [
     {
