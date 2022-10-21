@@ -30,8 +30,10 @@ def make_reservation(request):
             time = request.POST.get('time_reservation')
             date = request.POST.get('date_reservation')
             form.instance.client = request.user
-            # Double reservation verification based in User logged, time and date.
-            duplicate_reservations = duplicate_reservations_verification(time, date, form)
+        # Double reservation verification based in User logged, time and date.
+            duplicate_reservations = duplicate_reservations_verification(time,
+                                                                         date,
+                                                                         form)
             if len(duplicate_reservations) > 0:
                 messages.error(request, 'There is an existing reservation')
                 return render(request, '../templates/reservations.html',
@@ -46,7 +48,7 @@ def make_reservation(request):
 
     form = ReservationsForm
     return render(request, '../templates/reservations.html',
-                            {'form': form})
+                           {'form': form})
 
 @login_required
 def get_search_reservation(request):
@@ -93,12 +95,15 @@ def update_reservation(request, reservation_code):
             time = request.POST.get('time_reservation')
             date = request.POST.get('date_reservation')
             form.instance.client = request.user
-            # Double reservation verification based in User logged, time and date.
-            duplicate_reservations = duplicate_reservations_verification(time, date, form)
+        # Double reservation verification based in User logged, time and date.
+            duplicate_reservations = duplicate_reservations_verification(time,
+                                                                         date,
+                                                                         form)
             if len(duplicate_reservations) > 0:
                 messages.error(request, 'There is an existing reservation')
                 return render(request, '../templates/update_reservation.html',
-                                    {'form': form, 'reservation': reservation})
+                                       {'form': form,
+                                        'reservation': reservation})
             form.save()
             form_data = form.save()
             return render(request, '../templates/confirmed.html',
@@ -114,7 +119,9 @@ def client_reservations(request):
     now = datetime.now()
     today = now.date()
     if request.user.is_authenticated:
-        my_reservations = Reservations.objects.filter(client=request.user).filter(date_reservation__gte=today)
+        my_reservations = Reservations.objects.filter(
+                                       client=request.user).filter(
+                                       date_reservation__gte=today)
         return render(request, '../templates/client_reservations.html',
                                {'my_reservations': my_reservations})
 
