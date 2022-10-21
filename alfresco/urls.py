@@ -24,7 +24,8 @@ urlpatterns = [
     path('home', views.home, name='home'),
     path('menu', views.menu, name='menu'),
     path('contact', views.contact, name='contact'),
-    path('reservations', views.client_reservations, name="client_reservations"),
+    path('reservations', views.client_reservations,
+         name="client_reservations"),
     path('make_reservation', views.make_reservation, name='make_reservation'),
     path('search_reservation', views.get_search_reservation,
          name='search_reservation'),
@@ -32,9 +33,7 @@ urlpatterns = [
          name='delete_reservation'),
     path('update_reservation/<reservation_code>', views.update_reservation,
          name='update_reservation'),
-    path('business_login/', include('django.contrib.auth.urls')),
-    path('business_login/', include('business_login.urls')),
 ]
 
 
-handler404 = 'website.views.error_404'
+HANDLER404 = 'website.views.error_404'
