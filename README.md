@@ -88,7 +88,7 @@ deleting the existing reservation.
   - **Passed**: The modal warning appear asking the user to confirm the deletion.
   ![delete_reservation](assets/images/testing/delete_reservation.png)
 * An admin can login to see the reservations
-- Expected behaviour: An admin will be able to see the current reservations.
+- Expected behaviour: An admin will be able to see the current reservations upodn login to the admin panel.
    - **Passed**:Pass in the admin panel reservations are displayed showing the fields defines in admin.py
    ![admin_reservation](assets/images/testing/admin_reservation.png)
 ## Fixed bugs
