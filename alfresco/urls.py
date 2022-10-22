@@ -13,8 +13,9 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
+
 from django.urls import path, include
+from django.contrib import admin
 from website import views
 
 urlpatterns = [
@@ -27,8 +28,6 @@ urlpatterns = [
     path('reservations', views.client_reservations,
          name="client_reservations"),
     path('make_reservation', views.make_reservation, name='make_reservation'),
-    path('search_reservation', views.get_search_reservation,
-         name='search_reservation'),
     path('delete_reservation/<reservation_code>', views.delete_reservation,
          name='delete_reservation'),
     path('update_reservation/<reservation_code>', views.update_reservation,

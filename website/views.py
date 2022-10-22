@@ -51,33 +51,13 @@ def make_reservation(request):
                            {'form': form})
 
 @login_required
-def get_search_reservation(request):
-    """
-    Search for existing reservation using the reservation code.
-    Raise an error if the code does not exist.
-    """
-    if request.method == "POST":
-        try:
-            searched = request.POST['searched']
-            print(searched)
-            reservation = Reservations.objects.get(
-                reservation_code__exact=searched)
-            print(reservation.phone)
-            return render(request, '../templates/search_reservation.html',
-                                   {'searched': searched,
-                                    'reservation': reservation})
-        except Reservations.DoesNotExist:
-            messages.error(request, 'Reservation Not found')
-            return redirect('reservations')
-
-@login_required
 def delete_reservation(request, reservation_code):
     """
     Delete an exsiting reservation
     """
-    delete_reservation = Reservations.objects.get(
+    delete_booking = Reservations.objects.get(
         reservation_code__exact=reservation_code)
-    delete_reservation.delete()
+    delete_booking.delete()
     return redirect('client_reservations')
 
 @login_required
@@ -92,18 +72,7 @@ def update_reservation(request, reservation_code):
     # Verify that the reservation belongs to the current logged user
     if current_client == reservation.client:
         if form.is_valid():
-            time = request.POST.get('time_reservation')
-            date = request.POST.get('date_reservation')
             form.instance.client = request.user
-        # Double reservation verification based in User logged, time and date.
-            duplicate_reservations = duplicate_reservations_verification(time,
-                                                                         date,
-                                                                         form)
-            if len(duplicate_reservations) > 0:
-                messages.error(request, 'There is an existing reservation')
-                return render(request, '../templates/update_reservation.html',
-                                       {'form': form,
-                                        'reservation': reservation})
             form.save()
             form_data = form.save()
             return render(request, '../templates/confirmed.html',
@@ -116,6 +85,9 @@ def update_reservation(request, reservation_code):
 
 @login_required
 def client_reservations(request):
+    """
+    Displays the upcoming reservations from the client from today onwards.
+    """
     now = datetime.now()
     today = now.date()
     if request.user.is_authenticated:
