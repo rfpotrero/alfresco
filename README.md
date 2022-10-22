@@ -87,28 +87,67 @@ deleting the existing reservation.
    ![admin_reservation](assets/images/testing/admin_reservation.png)
 ## Fixed bugs
 ___
-- Adding a space between characters in the phone field breaks the reservation form #47 - **Resolved**
-- After signing up error page is displayed #63 **Resolved**
-- Password reset link was displaying an error #64 **Resolved**
+- Adding a space between characters in the phone field breaks the reservation form [#47](https://github.com/rfpotrero/alfresco/issues/47) - **Resolved**
+- After signing up error page is displayed [#63](https://github.com/rfpotrero/alfresco/issues/63) **Resolved**
+- Password reset link was displaying an error [#64](https://github.com/rfpotrero/alfresco/issues/64) **Resolved**
 ## Supported screens and Browsers
 ___
    - Google Chrome 
    - Mobile 
 ## Deployment
 ___
-   * Heroku deployment
-     - Navigate and login to Heroku and login it 
+   * Heroku deployment   
+     - Browse to heroku and login
+     - Upper right corner. Click in New and select New App
+     - Choose a Name for the app and a Region
+     - Click in your App name if you are not redirect to it. 
      - Click in Settings, under builpacks select: 
-     - Python, NodeJS in this order first Python, second nodejs 
+       - Heroku/Python
+     - Click in Resources
+     - In add-on search for Heroku Postgres 
+     - Click in Settings again
+     - Click Reveal Config Vars
      - In Config Vars click in Add and add the following
-     - PORT , 8000
-   - Once that is completed. Click in Deploy
-      - In Deploy Method clink under GitHub 
-      - Connect your Github repository to Heroku
-      - At the bottom under Manual Deployment select the Branch you want to deploy. Main by default
-      - Click in Deploy Branch
-      - Click in the View button to open deployed app.
+       - CLOUDINARY_URL - An account from Cloudinary is required. 
+         - Cloudinary Setup
+         - Visit the [Cloudinary website](https://cloudinary.com/)
+         - Click on the Sign Up For Free button
+         - Provide your name, email address and choose a password
+         - For Primary interest, you can choose Programmable Media for image and video API
+         - Optional: edit your assigned cloud name to something more memorable
+         - Click Create Account
+         - Verify your email and you will be brought to the dashboard
+       - DATABASE_URL - This will be added automatically by Heroku
+       - DISABLE_COLLECTSTATIC - 
+       - SECRET_KEY - Secret Key from Django
+       - PORT - 8000
+     - Return to your Code Editor where your code lives
+     - Create a Procfile
+       - Inside enter web: gunicorn alfresco.wsgi
+     - In settings.py navigate to ALLOWED_HOST
+       - Add heroku APP URL 
+     - In settings.py set DEBUG=False
+     - Run pip3 freeze >> requirements.txt to ensure packages and libraries are captured.
+     - Commit and push your code as needed.
+     - If there any issue during Heroky deployment do the following
+       - Create a runtime.txt file in your django root 
+         - Inside that file enter python-3.8.13
+     - Once that is completed. Click in Deploy
+       - In Deploy Method clink under GitHub 
+       - Connect your Github repository to Heroku
+       - At the bottom under Manual Deployment select the Branch you want to deploy. Main by default
+       - Click in Deploy Branch
+       - Click in the View button to open deployed app.
+   * Local deployment
+     - Clone the repository 
+     - Ensure your ENV variables are correct
+     - Run the command python3 manage.py migrate if required.
+     - Run the command python3 manage.py runserver
+     - In settings.py modify ALLOWED_HOST to resolve any connectivity issues.
+      
+
 ## Credits
 ___
    * Adding a form to the site to capture user reservations https://www.youtube.com/watch?v=CVEKe39VFu8&list=PLCC34OHNcOtqW9BJmgQPPzUpJ8hl49AGy&index=8
-   * Code Institute for providing the template.
+   * Official docummenation from https://getbootstrap.com/, https://djangoproject.com
+   * Code Institute for providing the template and the training material
