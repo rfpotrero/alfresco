@@ -124,7 +124,7 @@ ___
          - Click Create Account
          - Verify your email and you will be brought to the dashboard
        - DATABASE_URL - This will be added automatically by Heroku
-       - DISABLE_COLLECTSTATIC - 1
+       - DISABLE_COLLECTSTATIC - 0
        - SECRET_KEY - Secret Key from Django
        - PORT - 8000
      - Return to your Code Editor where your code lives
