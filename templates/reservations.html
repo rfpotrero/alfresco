@@ -1,6 +1,14 @@
 {% extends "base.html" %}
-
 {% block content %}
+<div class="container text-center">
+{% if messages %}    
+        <ul class="messages text-warning list-unstyled">
+            {% for message in messages %}
+            <li class="fs-5">{{ message }}</li>
+            {% endfor %}
+        </ul>
+</div>
+{% endif %}
 <div class="container mt-2 p-2" >
     <!-- Form to capture client reservations -->
     <form action="" method="post">
@@ -8,16 +16,5 @@
         {{ form.as_p }}
         <input class="btn btn-primary" type="submit" value="Make Reservation">
     </form>
-
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-            <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
 </div>
-
-
-
 {% endblock %}
