@@ -99,7 +99,7 @@ ___
 ## Supported screens and Browsers
 ___
    - Google Chrome 
-   - Mobile 
+   - Mobile. Mobile first design was use here. Responsiveness was achieve using bootstrap
 ## Deployment
 ___
    * Heroku deployment   
