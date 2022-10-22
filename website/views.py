@@ -55,10 +55,16 @@ def delete_reservation(request, reservation_code):
     """
     Delete an exsiting reservation
     """
-    delete_booking = Reservations.objects.get(
+    reservation = Reservations.objects.get(
         reservation_code__exact=reservation_code)
-    delete_booking.delete()
-    return redirect('client_reservations')
+    # Check to verify that the logged user is the owner of the reservation
+    if request.user == reservation.client:
+        delete_booking = Reservations.objects.get(
+            reservation_code__exact=reservation_code)
+        delete_booking.delete()
+        return redirect('client_reservations')
+    return render(request, '../templates/error404.html')
+
 
 @login_required
 def update_reservation(request, reservation_code):
