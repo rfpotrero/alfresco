@@ -66,6 +66,12 @@ ___
 - **Passed**: The user is redirected to the reservations page upon account creation. Validation prevent duplicate usernames and email.
       ![signup](/assets/images/testing/signup.png)
       ![validation-signup](/assets/images/testing/validation-signup.png)
+* A visiting user can login/logout from their account
+  - Expected behaviour: A user can login/logout from their account. Upon login in the button will change to logout
+    - **Passed**: Upon login the button change to logout 
+  
+        ![login](assets/images/testing/login.png)
+        ![logout](assets/images/testing/logout.png)
 * A logged user can make a reservation
 - Expected behaviour: Users will be presented with a form. Upon filling the form the reservation will be saved into the Database.
   - **Passed**: Confirmation is displayed after submit the reservation  
@@ -118,7 +124,7 @@ ___
          - Click Create Account
          - Verify your email and you will be brought to the dashboard
        - DATABASE_URL - This will be added automatically by Heroku
-       - DISABLE_COLLECTSTATIC - 
+       - DISABLE_COLLECTSTATIC - 1
        - SECRET_KEY - Secret Key from Django
        - PORT - 8000
      - Return to your Code Editor where your code lives
