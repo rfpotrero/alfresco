@@ -154,6 +154,6 @@ ___
 
 ## Credits
 ___
-   * Adding a form to the site to capture user reservations https://www.youtube.com/watch?v=CVEKe39VFu8&list=PLCC34OHNcOtqW9BJmgQPPzUpJ8hl49AGy&index=8
+   * [Codemy](https://www.youtube.com/watch?v=CVEKe39VFu8&list=PLCC34OHNcOtqW9BJmgQPPzUpJ8hl49AGy&index=8)adding form and inspiration on some features.
    * Official docummenation from https://getbootstrap.com/, https://djangoproject.com
-   * Code Institute for providing the template and the training material
+   * Code Institute Template and Cloudinary instructions
